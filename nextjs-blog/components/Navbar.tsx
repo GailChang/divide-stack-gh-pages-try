@@ -5,16 +5,13 @@ import { Dialog, Disclosure, Popover, Transition } from '@headlessui/react'
 import { usePopper } from 'react-popper'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import Button from './Button';
 
 import logo from '/public/Desktop/logo.png'
 
-const navigation = [
-  { name: 'Dashboard', href: '#', current: true },
-  { name: 'Team', href: '#', current: false },
-  { name: 'Projects', href: '#', current: false },
-  { name: 'Calendar', href: '#', current: false },
-]
+
+
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
@@ -33,25 +30,25 @@ export default function Navbar() {
 
   return (
     <div className='fixed w-full px-4 py-3 z-10'>
-    <div className='flex justify-between items-center w-full bg-transparent'>
+      <div className='flex justify-between items-center w-full bg-transparent'>
         <div className='flex flex-shrink-0'>
-            <Image height={72} width={196} src={logo} alt='logo'></Image>
+          <Image priority height={72} width={196} src={logo} alt='logo'></Image>
         </div>
         <div className='md:flex hidden grow justify-end'>
-            <ul className='flex'>
-                <li className='mx-1'><Button variant='default' size='default' ><a href='#'>客房旅宿</a></Button></li>
-                <li className='mx-1'><Button variant='default' size='default' ><a href='#'>會員登入</a></Button></li>
-                <li className='mx-1'><Button variant='default' size='default' ><a href='#'>立即訂房</a></Button></li>
-            </ul>
+          <ul className='flex'>
+            <li className='mx-1'><Button variant='default' size='default' ><a href='#'>客房旅宿</a></Button></li>
+            <li className='mx-1'><Button variant='default' size='default' ><a href='member'>會員登入</a></Button></li>
+            <li className='mx-1'><Button variant='default' size='default' ><a href='#'>立即訂房</a></Button></li>
+          </ul>
         </div>
         <div className='flex flex-shrink-0 md:hidden'>
-            <Button variant='ghost' size='icon'
-              onClick={openModal} >
-              <Bars3Icon/>
-            </Button>
+          <Button variant='ghost' size='icon'
+            onClick={openModal} >
+            <Bars3Icon/>
+          </Button>
         </div>
-    </div>
-    <Transition appear show={isOpen} as={Fragment}>
+      </div>
+      <Transition appear show={isOpen} as={Fragment}>
         <Dialog as="div" className="relative z-10" onClose={closeModal}>
           <Transition.Child
             as={Fragment}
@@ -79,8 +76,8 @@ export default function Navbar() {
                 <Dialog.Panel className="flex flex-col w-full h-full transform overflow-hidden py-2 px-6 text-left align-middle shadow-xl transition-all">
                   <div className="mt-4 flex flex-row-reverse">
                     <Button variant='ghost' size='icon' 
-                        onClick={closeModal} >
-                        <XMarkIcon/>
+                      onClick={closeModal} >
+                      <XMarkIcon/>
                     </Button>
                   </div>
 
@@ -96,7 +93,7 @@ export default function Navbar() {
             </div>
           </div>
         </Dialog>
-    </Transition>
+      </Transition>
     </div>
   )
 }

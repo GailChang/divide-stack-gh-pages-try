@@ -3,7 +3,7 @@ import Footer from "./Footer";
 import Button from "./Button";
 
 export {
-    Navbar,
-    Footer,
-    Button
+  Navbar,
+  Footer,
+  Button
 }
